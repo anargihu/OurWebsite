@@ -1,51 +1,37 @@
+const navbar = document.querySelector(".navbar");
+const nav = document.querySelector("nav");
 const cards = document.querySelectorAll(".card");
 const buttons = document.querySelectorAll(".button");
 const navLinks = document.querySelectorAll("nav a");
 
-cards.forEach(card => {
-  card.addEventListener("mouseenter", () => {
-    card.style.transform = "translateY(-10px)";
-  });
+const menuButton = document.createElement("button");
+menuButton.className = "menu-button";
+menuButton.textContent = "☰";
+menuButton.setAttribute("aria-label", "Open menu");
+navbar.appendChild(menuButton);
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
-  });
-});
-
-buttons.forEach(button => {
-  button.addEventListener("click", event => {
-    const target = button.getAttribute("href");
-
-    if (target && target.startsWith("#")) {
-      event.preventDefault();
-
-      const section = document.querySelector(target);
-
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    }
-  });
+menuButton.addEventListener("click", () => {
+  nav.classList.toggle("mobile-open");
+  menuButton.textContent = nav.classList.contains("mobile-open") ? "✕" : "☰";
 });
 
 navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("mobile-open");
+    menuButton.textContent = "☰";
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", event => {
-    const target = link.getAttribute("href");
+    const target = document.querySelector(link.getAttribute("href"));
 
-    if (target && target.startsWith("#")) {
+    if (target) {
       event.preventDefault();
-
-      const section = document.querySelector(target);
-
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
   });
 });
@@ -54,8 +40,7 @@ const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add("visible");
       }
     });
   },
@@ -64,19 +49,8 @@ const observer = new IntersectionObserver(
   }
 );
 
-cards.forEach(card => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(25px)";
-  card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-  observer.observe(card);
-});
+cards.forEach(card => observer.observe(card));
 
 window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar");
-
-  if (window.scrollY > 30) {
-    navbar.style.boxShadow = "0 8px 30px rgba(8, 168, 208, 0.12)";
-  } else {
-    navbar.style.boxShadow = "";
-  }
+  navbar.classList.toggle("scrolled", window.scrollY > 30);
 });
