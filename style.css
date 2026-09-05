@@ -305,3 +305,53 @@ footer p {
     padding: 40px 28px;
   }
 }
+.menu-button {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: #08a8d0;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 8px 30px rgba(8, 168, 208, 0.12);
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 800px) {
+  .menu-button {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 15px 5%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(8, 168, 208, 0.2);
+  }
+
+  nav.mobile-open {
+    display: flex;
+  }
+
+  nav a {
+    padding: 15px 0;
+  }
+}
