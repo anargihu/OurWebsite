@@ -1,6 +1,7 @@
 const navbar = document.querySelector(".navbar");
 const nav = document.querySelector("nav");
 const cards = document.querySelectorAll(".card");
+const features = document.querySelectorAll(".feature");
 
 const menuButton = document.createElement("button");
 menuButton.className = "menu-button";
@@ -57,6 +58,11 @@ const observer = new IntersectionObserver(
 cards.forEach((card, index) => {
   card.style.transitionDelay = `${index * 80}ms`;
   observer.observe(card);
+});
+
+features.forEach((feature, index) => {
+  feature.style.transitionDelay = `${index * 100}ms`;
+  observer.observe(feature);
 });
 
 window.addEventListener("scroll", () => {
