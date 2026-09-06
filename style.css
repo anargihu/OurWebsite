@@ -170,7 +170,7 @@ nav a:hover {
   transform: translateY(0);
 }
 
-.projects {
+.features {
   padding: 110px 7%;
 }
 
@@ -198,6 +198,58 @@ nav a:hover {
   color: #66828c;
 }
 
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.feature {
+  padding: 32px;
+  border: 1px solid rgba(8, 168, 208, 0.18);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 20px 50px rgba(8, 168, 208, 0.08);
+  backdrop-filter: blur(15px);
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature.visible:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 25px 60px rgba(8, 168, 208, 0.15);
+}
+
+.feature-number {
+  color: #08a8d0;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.feature h3 {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.feature p {
+  margin-top: 12px;
+  color: #66828c;
+  line-height: 1.7;
+}
+
+.projects {
+  padding: 110px 7%;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -223,13 +275,9 @@ nav a:hover {
   transform: translateY(0);
 }
 
-.card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 25px 60px rgba(8, 168, 208, 0.15);
-}
-
 .card.visible:hover {
   transform: translateY(-7px);
+  box-shadow: 0 25px 60px rgba(8, 168, 208, 0.15);
 }
 
 .icon {
@@ -268,12 +316,6 @@ nav a:hover {
 
 .card a:hover {
   transform: translateX(4px);
-}
-
-.center-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 45px;
 }
 
 .about {
@@ -360,6 +402,12 @@ nav a:hover {
   white-space: nowrap;
 }
 
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+
 .footer-links {
   display: flex;
   justify-content: center;
@@ -411,7 +459,8 @@ footer p {
 }
 
 @media (max-width: 900px) {
-  .project-grid {
+  .project-grid,
+  .feature-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -468,11 +517,13 @@ footer p {
     font-size: 17px;
   }
 
+  .features,
   .projects {
     padding: 80px 5%;
   }
 
-  .project-grid {
+  .project-grid,
+  .feature-grid {
     grid-template-columns: 1fr;
   }
 
@@ -507,8 +558,7 @@ footer p {
   }
 
   *,
-  *::before,
-  *::after {
+  *::before {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
