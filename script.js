@@ -1,24 +1,27 @@
 const navbar = document.querySelector(".navbar");
 const nav = document.querySelector("nav");
 const cards = document.querySelectorAll(".card");
-const buttons = document.querySelectorAll(".button");
-const navLinks = document.querySelectorAll("nav a");
 
 const menuButton = document.createElement("button");
 menuButton.className = "menu-button";
 menuButton.textContent = "☰";
 menuButton.setAttribute("aria-label", "Open menu");
+menuButton.setAttribute("type", "button");
+
 navbar.appendChild(menuButton);
 
 menuButton.addEventListener("click", () => {
-  nav.classList.toggle("mobile-open");
-  menuButton.textContent = nav.classList.contains("mobile-open") ? "✕" : "☰";
+  const open = nav.classList.toggle("mobile-open");
+
+  menuButton.textContent = open ? "✕" : "☰";
+  menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 });
 
-navLinks.forEach(link => {
+document.querySelectorAll("nav a").forEach(link => {
   link.addEventListener("click", () => {
     nav.classList.remove("mobile-open");
     menuButton.textContent = "☰";
+    menuButton.setAttribute("aria-label", "Open menu");
   });
 });
 
@@ -26,13 +29,14 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", event => {
     const target = document.querySelector(link.getAttribute("href"));
 
-    if (target) {
-      event.preventDefault();
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
+    if (!target) return;
+
+    event.preventDefault();
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
 });
 
@@ -41,6 +45,7 @@ const observer = new IntersectionObserver(
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
     });
   },
@@ -49,8 +54,19 @@ const observer = new IntersectionObserver(
   }
 );
 
-cards.forEach(card => observer.observe(card));
+cards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 80}ms`;
+  observer.observe(card);
+});
 
 window.addEventListener("scroll", () => {
   navbar.classList.toggle("scrolled", window.scrollY > 30);
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 800) {
+    nav.classList.remove("mobile-open");
+    menuButton.textContent = "☰";
+    menuButton.setAttribute("aria-label", "Open menu");
+  }
 });
