@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b8f3ff">
+  <title>Sign In — OurWebsite</title>
+  <link rel="icon" href="favicon.JPG">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">Our</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="ourbot.html">OurBot</a>
+      <a href="status.html">Status</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-box">
+      <span>OUR ACCOUNT</span>
+      <h1>Sign in</h1>
+      <p>Sign in to your OurWebsite account.</p>
+
+      <form id="loginForm">
+        <label for="login">Username or Email</label>
+        <input id="login" type="text" autocomplete="username" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+
+        <button class="button primary" type="submit">Sign In</button>
+
+        <div id="loginMessage"></div>
+      </form>
+
+      <p class="auth-switch">
+        Don't have an account?
+        <a href="signup.html">Create one</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Our</div>
+    <p>© 2026 Our. All rights reserved.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>
