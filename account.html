@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b8f3ff">
+  <title>Account — OurWebsite</title>
+  <link rel="icon" href="favicon.JPG">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">Our</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="ourbot.html">OurBot</a>
+      <a href="status.html">Status</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-box">
+      <span>YOUR ACCOUNT</span>
+      <h1 id="accountUsername">Loading...</h1>
+
+      <div class="account-details">
+        <p><strong>Email</strong></p>
+        <p id="accountEmail">Loading...</p>
+
+        <p><strong>Account ID</strong></p>
+        <p id="accountId">Loading...</p>
+      </div>
+
+      <button class="button primary" id="signoutButton">
+        Sign Out
+      </button>
+
+      <div id="accountMessage"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Our</div>
+    <p>© 2026 Our. All rights reserved.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>
