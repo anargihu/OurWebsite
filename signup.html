@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b8f3ff">
+  <title>Sign Up — OurWebsite</title>
+  <link rel="icon" href="favicon.JPG">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">Our</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="ourbot.html">OurBot</a>
+      <a href="status.html">Status</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-box">
+      <span>OUR ACCOUNT</span>
+      <h1>Create account</h1>
+      <p>Create your OurWebsite account.</p>
+
+      <form id="signupForm">
+        <label for="username">Username</label>
+        <input id="username" type="text" autocomplete="username" minlength="3" maxlength="32" required>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="new-password" minlength="8" required>
+
+        <button class="button primary" type="submit">Create Account</button>
+
+        <div id="signupMessage"></div>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="login.html">Sign in</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Our</div>
+    <p>© 2026 Our. All rights reserved.</p>
+  </footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>
