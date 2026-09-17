@@ -32,7 +32,7 @@ async function apiRequest(path, options = {}) {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.error || "Something went wrong.");
+    throw new Error(data.message || data.error || "Something went wrong.");
   }
 
   return data;
@@ -58,7 +58,6 @@ if (loginForm) {
       });
 
       saveToken(data.token);
-
       window.location.href = "account.html";
     } catch (error) {
       message.textContent = error.message;
